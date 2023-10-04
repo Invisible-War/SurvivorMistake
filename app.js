@@ -94,19 +94,7 @@ document.getElementById("text").hidden = true;
 document.body.style.background = "black";
 document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
 
-document.getElementById("ok").onclick = () => {
 
-	document.getElementById("dialog").hidden = true;
-	document.body.style.background = "url(sky.jpg)";
-	choose();
-
-		document.getElementById("heli").play();
-	speechSynthesis.speak(ss);	
-	ss.onend = ()=> {
-	document.getElementById("heli").pause();
-		load();
-	}
-};
 
 document.getElementById("neither").onclick = () => {
 	document.getElementById("dialog").hidden = true;
@@ -129,21 +117,6 @@ speechSynthesis.speak(ss);
 
 	
 };
-document.getElementById("no").onclick = () => {
-	document.getElementById("dialog").hidden = true;
-	document.body.style.background = "url(sky.jpg)";
-	choose();
-	
-
-	document.getElementById("heli").play();
-speechSynthesis.speak(ss);
-	ss.onend = ()=> {
-	document.getElementById("heli").pause();
-		load();
-	}
-	
-}
-
 
 
 var t;
