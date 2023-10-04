@@ -4,9 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+
 	<title>Survivor Mistake</title>
-	<script src="socket.io.js"></script>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link rel="icon" href="forest.jpeg" />
 		<link rel="manifest" href="manifest.json" />
@@ -310,10 +309,6 @@
 	<audio id="shot" src="boing.mp3"></audio>
 	<audio id="intro" src="Introduction.wav"></audio>
 	<audio id="heli" src="helicopter.mp3"></audio>
-		<div id="messages" style="background: white; position: absolute; top: 10vh; left: 85vw; overflow-y:scroll; width: 15vw; height: 90vh; z-index: 100;"></div>
-	<br>
-	<input id="message" style="position: absolute; height: 10vh; width: 15vw; top: 90vh; left: 85vw; z-index: 100;" placeholder="Type a message here..."/>
-</div>
 <script>
 	if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
