@@ -11,7 +11,7 @@ fire.style.top = "500px";
 fire.style.left = "1000px";
 var shelter;
 var night = false;
-var socket = io.connect();
+
 var img = new Image();
 img.src = "inside.jpg";
 img.style.height = "100vh";
@@ -85,7 +85,7 @@ function hunt(e) {
 }
 function choose() {
 	username = prompt("Choose an username!");
-	socket.emit("username", username);
+
 	ss = new SpeechSynthesisUtterance("Hello "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
 }
 document.getElementById("dialog").hidden = false;
@@ -99,10 +99,7 @@ document.getElementById("ok").onclick = () => {
 	document.getElementById("dialog").hidden = true;
 	document.body.style.background = "url(sky.jpg)";
 	choose();
-	var room = prompt("Choose a private room name.");
-	var password = prompt("Choose a password.");
-	socket.emit("roomname", room);
-	socket.emit("password", password);
+
 		document.getElementById("heli").play();
 	speechSynthesis.speak(ss);	
 	ss.onend = ()=> {
@@ -125,7 +122,7 @@ speechSynthesis.speak(ss);
 	for (var i = 0; i < 40; i++) {
 		link += characters.charAt(Math.floor(Math.random() * characters.length));
 	}
-	socket.emit("self", link);
+
 	console.log(link);
 		load();
 	}
@@ -136,10 +133,7 @@ document.getElementById("no").onclick = () => {
 	document.getElementById("dialog").hidden = true;
 	document.body.style.background = "url(sky.jpg)";
 	choose();
-	var roomname = prompt("Enter the room name.");
-	socket.emit("room", roomname);
-	var pass = prompt("Enter the room's password.");
-	socket.emit("pass", pass);
+	
 
 	document.getElementById("heli").play();
 speechSynthesis.speak(ss);
@@ -149,56 +143,9 @@ speechSynthesis.speak(ss);
 	}
 	
 }
-socket.on("usernotadded", () => {
-	person = prompt(
-		"Choose a new username. Your old one was either taken, inappropriate, or blank!"
-	);
-	socket.emit("username", person);
-});
-socket.on("roomclosed", (data) => {
-	if (
-		typeof users[0 + data.number] != "undefined" &&
-		typeof users[1 + data.number] != "undefined" &&
-		typeof users[2 + data.number] != "undefined"
-	) {
-		alert(
-			"Game room closed. Players are " +
-			users[0 + data.number] +
-			", " +
-			users[1 + data.number] +
-			", " +
-			users[2 + data.number]
-		);
-		roomnumber = data.room;
-		var play = 0;
-		users.forEach((player) => {
-			player = document.getElementById("score").cloneNode(true);
-			player.id = users[play + data.number];
-			player.value = users[play + data.number] + ": 0";
-			console.log(users[play + data.number]);
-			player.classList.add("score");
-			player.style.marginBottom = "100px";
-			document.body.insertBefore(player, document.getElementById("universe"));
-			play++;
-		});
-	}
-});
 
-socket.on("useradded", (u) => {
-	users = u;
-});
-socket.on("left", (leaving) => {
-	alert(leaving + " left.");
-});
-socket.on("joined", (per) => {
-	alert(per + " joined.");
-});
-socket.on("leave", (u) => {
-	users = u;
-});
-socket.on("gameover", (killed) => {
-	alert(killed + " died.");
-});
+
+
 var t;
 var day = document.createElement("h1");
 var daynumber = 1;
@@ -281,7 +228,7 @@ function load() {
 			);
 			sol1 = document.getElementById("panther");
 			document.getElementById("coordinates").innerHTML = `You are at X: ${-matrix4.m41} Z: ${matrix4.m43}`;
-			socket.emit("move", matrix4);
+
 
 			a = parseInt(a);
 			b = parseInt(b);
@@ -479,33 +426,3 @@ function load() {
 
 
 }
-var message, p2, p, newmessage;
-
-document.getElementById("message").onkeydown = (e) => {
-	if (e.key == "Enter") {
-		message = document.getElementById("message").value;
-		document.getElementById("message").value = "";
-		p = document.createElement("p");
-		newmessage = message;
-		p.innerHTML = newmessage;
-		p.style.left = "90vw";
-		p.style.color = "black";
-		p.style.position = "relative";
-		p.style.zIndex = "101";
-		p.style.width = "10vw";
-		p.style.overflowX = "scroll";
-		socket.emit("message", { message: newmessage, user: username });
-		document.getElementById("messages").appendChild(p);
-	}
-};
-socket.on('newmessage', messagenew => {
-	p = document.createElement("p");
-	newmessage = messagenew.user + ": " + messagenew.message;
-	p.innerHTML = newmessage;
-	p.style.width = "10vw";
-	p.style.color = "black";
-	p.style.overflowX = "scroll";
-	p.style.position = "relative";
-	p.style.zIndex = "101";
-	document.getElementById("messages").appendChild(p);
-});
