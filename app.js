@@ -14,7 +14,7 @@ var lake = document.createElement("div");
 lake.style.height = "1000px";
 lake.style.width = "500px";
 lake.style.position = "absolute";
-lake.style.transform = "translateX(1000px) translateZ(1000px) perspective(1200px) rotateX(90deg)";
+lake.style.transform = "translateX(1000px) translateZ(1000px) perspective(1200px) rotateX(90deg) translateY(-250px)";
 lake.style.backgroundColor = "blue";
 lake.style.borderRadius = "50%";
 var laketrix;
@@ -186,10 +186,10 @@ function time(){
 												 }
 		if(daynumber === 4) {
 			document.getElementById("universe").appendChild(lake);
-			laketrix = new WebKitCSSMatrix(getComputedStyle(lake).transform);
+			laketrix = new WebKitCSSMatrix(window.getComputedStyle(lake).transform);
 		}
 		if(daynumber >= 4){
-			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (1000, 1000), then press D to drink.";
+			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (0, 0), then press D to drink.";
 		}
 		if(daynumber > 4 && daynumber % 2 != 0){
 			thirst += 10;
