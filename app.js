@@ -270,11 +270,14 @@ function load() {
 				task.max = 5;
 				setTimeout(()=> {
 					fire.remove();
+					firematrix = "";
 				}, 120000);
 			}
-			if(e.key == "x" && firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 && daynumber >= 2){
+			if(e.key == "x" && fire.style.position ===" absolute" && daynumber >= 2){
+				if(firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 ){
 				alert("Food cooked. It will now fill you twice as much.");
 				food = food * 2;
+				}
 			}
 			if (e.key == " ") {
 				if(daynumber === 3){
