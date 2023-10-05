@@ -14,7 +14,7 @@ var lake = document.createElement("div");
 lake.style.height = "100px";
 lake.style.width = "100px";
 lake.style.position = "absolute";
-lake.style.transform = "translate3D(1000px, 0px, 1000px) perspective(1200px)";
+lake.style.transform = "translate3d(1000px, 0px, 1000px) perspective(1200px)";
 lake.style.backgroundColor = "blue";
 lake.style.borderRadius = "50%";
 var laketrix = new WebKitCSSMatrix(getComputedStyle(lake).transform);
@@ -267,7 +267,7 @@ function load() {
 			}
 			if(e.key == "d" && daynumber >= 4){
 				if(matrix4.m41 === laketrix.m41 && matrix4.m43 === laketrix.m43){
-					thrist-= 2;
+					thirst-= 2;
 					alert("You are now less thirsty. doing this 5 times a day will even things out.");
 				}
 			}
