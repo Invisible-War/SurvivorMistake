@@ -17,7 +17,7 @@ lake.style.position = "absolute";
 lake.style.transform = "translate3d(1000px, 0px, 1000px) perspective(1200px)";
 lake.style.backgroundColor = "blue";
 lake.style.borderRadius = "50%";
-var laketrix = new WebKitCSSMatrix(getComputedStyle(lake).transform);
+var laketrix;
 var shelter;
 var night = false;
 
@@ -181,7 +181,10 @@ function time(){
 													 task.value = 6;
 													 tasks.innerHTML = "Forage";
 												 }
-		if(daynumber === 4) document.getElementById("universe").appendChild(lake);
+		if(daynumber === 4) {
+			document.getElementById("universe").appendChild(lake);
+			laketrix = new WebKitCSSMatrix(getComputedStyle(lake).transform);
+		}
 		if(daynumber >= 4){
 			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (1000, 1000), then press D to drink.";
 		}
