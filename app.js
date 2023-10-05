@@ -70,7 +70,8 @@ var deer = new Image(200, 200);
 deer.hidden = true;
 			document.body.appendChild(deer);
 function hunt(e) {
-	if (e.key == "h" && document.activeElement != document.getElementById("message")) {
+	if (e.key == "h") {
+		if(daynumber < 3){
 		alert("Click to get the deer in time.");
 		
 			deer.hidden = false;
@@ -82,6 +83,13 @@ function hunt(e) {
 			deer.hidden = true;
 		}, 5000);
 	}
+		else{
+			if(Math.floor(Math.random() * 5) === 2){
+						alert("Edible mushroom found! Each one will count as 4 food.");
+						food += 4;
+					}
+		}
+}
 }
 function choose() {
 	username = prompt("Choose an username!");
@@ -92,7 +100,7 @@ document.getElementById("dialog").hidden = false;
 document.getElementById("universe").hidden = true;
 document.getElementById("text").hidden = true;
 document.body.style.background = "black";
-document.getElementById("option").innerHTML = "Do You Want To Create A Room?";
+document.getElementById("option").innerHTML = "Do You Want To Start?";
 
 
 
@@ -273,19 +281,14 @@ function load() {
 					firematrix = "";
 				}, 120000);
 			}
-			if(e.key == "x" && fire.style.position ===" absolute" && daynumber >= 2){
+			if(e.key == "x" && fire.style.position ==="absolute" && daynumber >= 2){
 				if(firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 ){
 				alert("Food cooked. It will now fill you twice as much.");
 				food = food * 2;
 				}
 			}
 			if (e.key == " ") {
-				if(daynumber === 3){
-					if(Math.floor(Math.random() * 5 === 2)){
-						alert("Edible mushroom found! each one will count as 4 food");
-						food += 4;
-					}
-				}
+				
 				if (-matrix4.m41 === wood1.m41 && matrix4.m43 === wood1.m43) {
 					alert("Wood found!");
 					task.value--;
