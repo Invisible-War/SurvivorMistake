@@ -4,11 +4,20 @@ var tasks = document.getElementById("tasks");
 var x;
 var fire;
 var ss;
+var thirst = 0;
 fire = new Image(500, 500);
 fire.src = "fire.png";
 fire.zIndex = "400";
 fire.style.top = "500px";
 fire.style.left = "1000px";
+var lake = document.createElement("div");
+lake.style.height = "100px";
+lake.style.width = "100px";
+lake.style.position = "absolute";
+lake.style.transform = "translate3D(1000px, 0px, 1000px) perspective(1200px)";
+lake.style.backgroundColor = "blue";
+lake.style.borderRadius = "50%";
+var laketrix = new WebKitCSSMatrix(getComputedStyle(lake).transform);
 var shelter;
 var night = false;
 
@@ -172,7 +181,24 @@ function time(){
 													 task.value = 6;
 													 tasks.innerHTML = "Forage";
 												 }
-		alert("Wake up sleepyhead! You must go live this month!");
+		if(daynumber === 4) document.getElementById("universe").appendChild(lake);
+		if(daynumber >= 4){
+			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (1000, 1000), then press D to drink.";
+		}
+		if(daynumber > 4 && daynumber % 2 != 0){
+			thirst += 10;
+			if(thirst >=30){
+				 alert("You did not drink enough. Game Over.");
+													 var attempt = confirm("Try again?");
+													 if(attempt == true){
+														 location.reload();
+													 }
+													 else{
+														 window.close();
+													 }
+			}
+		}
+		alert("Wake up sleepyhead! You must go live today!");
 		
 		night = false;
 												 setTimeout(()=> {
@@ -238,6 +264,12 @@ function load() {
 			}
 			if (document.getElementById("4") != null) {
 				wood5 = new WebKitCSSMatrix(window.getComputedStyle(document.getElementById("4")).transform);
+			}
+			if(e.key == "d" && daynumber >= 4){
+				if(matrix4.m41 === laketrix.m41 && matrix4.m43 === laketrix.m43){
+					thrist-= 2;
+					alert("You are now less thirsty. doing this 5 times a day will even things out.");
+				}
 			}
 			if (e.key == "ArrowUp") {
 				e.preventDefault();
