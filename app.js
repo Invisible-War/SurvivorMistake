@@ -14,7 +14,7 @@ var lake = document.createElement("div");
 lake.style.height = "1000px";
 lake.style.width = "500px";
 lake.style.position = "absolute";
-lake.style.transform = "translateX(1000px) translateZ(1000px) perspective(1200px) rotateX(90deg) translateY(250px)";
+lake.style.transform = "translateX(1000px) translateZ(1000px) perspective(1200px)";
 lake.style.backgroundColor = "blue";
 lake.style.borderRadius = "50%";
 var laketrix;
