@@ -78,7 +78,7 @@ function hunt(e) {
 		
 		setTimeout(() => {
 			deer.removeEventListener("click", foodget);
-			alert("You have " + food + " pounds of food. Every day, ten pounds of food will be used.");
+			alert("You have " + food + " food. Every day, ten food will be used.");
 			deer.hidden = true;
 		}, 5000);
 	}
@@ -127,6 +127,7 @@ var wood1;
 var wood2;
 var wood3;
 var wood4;
+var firematrix;
 var wood5;
 function time(){
 	if(night == false){
@@ -136,6 +137,9 @@ function time(){
 	else if(night == true){
 		universe.hidden = true;
 	 day.hidden = false;
+		 day.style.top = "100px";
+													 day.style.left = "100px";
+								 day.style.position = "relative";
 												 food -= 10;
 												 if(food < 0){
 													 alert("You do not have enough food. Game Over.");
@@ -154,12 +158,17 @@ function time(){
 													 task.value = 6;
 													 tasks.innerHTML = "Make Fire";
 												 }
-		alert("Wake up sleepyhead! You must go live this month!")
+		 if(daynumber === 3){
+													 day.innerHTML = "Day " + daynumber + ". Look around the area for other food. The deer are getting skeptical.";
+													 task.max = 6;
+													 task.value = 6;
+													 tasks.innerHTML = "Forage";
+												 }
+		alert("Wake up sleepyhead! You must go live this month!");
+		
 		night = false;
 												 setTimeout(()=> {
-													 day.style.top = "100px";
-													 day.style.left = "100px";
-													 day.style.position = "relative";
+													
 													 day.hidden = true;
 													 universe.hidden = false;
 												 }, 5000)
@@ -257,12 +266,23 @@ function load() {
 				document.getElementById("universe").appendChild(fire);
 				alert("The fire will burn for half the day. Press x whenever you have enough wood and need to cook your food.");
 				task.value = 5;
+				firematrix = new WebKitCSSMatrix(window.getComputedStyle(fire).transform);
 				task.max = 5;
 				setTimeout(()=> {
 					fire.remove();
 				}, 120000);
 			}
+			if(e.key == "x" && firematrix.m41 === matrix4.m41 && firematrix.m43 === matrix4.m43 && daynumber >= 2){
+				alert("Food cooked. It will now fill you twice as much.");
+				food = food * 2;
+			}
 			if (e.key == " ") {
+				if(daynumber === 3){
+					if(Math.floor(Math.random() * 5 === 2)){
+						alert("Edible mushroom found! each one will count as 4 food");
+						food += 4;
+					}
+				}
 				if (-matrix4.m41 === wood1.m41 && matrix4.m43 === wood1.m43) {
 					alert("Wood found!");
 					task.value--;
