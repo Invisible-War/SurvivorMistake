@@ -94,7 +94,7 @@ function hunt(e) {
 function choose() {
 	username = prompt("Choose an username!");
 
-	ss = new SpeechSynthesisUtterance("Hello "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
+	ss = new SpeechSynthesisUtterance("Hello, "+ username +". Welcome to Survivor. We will pick you up in a month. OH NO WHAT IS THAT!!!!!!");
 }
 document.getElementById("dialog").hidden = false;
 document.getElementById("universe").hidden = true;
