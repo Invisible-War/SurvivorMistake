@@ -84,7 +84,7 @@ function hunt(e) {
 		}, 5000);
 	}
 		else{
-			if(Math.floor(Math.random() * 5) === 2){
+			if(Math.floor(Math.random() * 15) === 2){
 						alert("Edible mushroom found! Each one will count as 4 food.");
 						food += 4;
 					}
