@@ -148,10 +148,13 @@ var firematrix;
 var wood5;
 function time(){
 	if(night == false){
+		document.getElementById("night").style.opacity = "40%";
+		
 			alert("It is night time. Go run around riskingly, or sleep safely in your shelter");
 		night = true;
 	}
 	else if(night == true){
+				document.getElementById("night").style.opacity = "0%";
 		universe.hidden = true;
 	 day.hidden = false;
 		 day.style.top = "100px";
