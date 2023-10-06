@@ -29,6 +29,24 @@ img.style.zIndex = "500";
 img.style.position = "absolute";
 document.getElementById("universe").appendChild(img);
 img.hidden = true;
+function nighttime(){
+	if(night == true){
+		if(Math.floor(Math.random() * 25) === 6){
+			alert("You went out too late and got bitten by something poisonous. Game Over.");
+			 var attempt = confirm("Try again?");
+													 if(attempt == true){
+														 location.reload();
+													 }
+													 else{
+														 window.close();
+													 }
+		}
+		else{
+		setTimeout(nighttime, 10000)
+		}
+	}
+}
+
 var food = 0;
 var fight = false;
 var username;
@@ -148,13 +166,14 @@ var firematrix;
 var wood5;
 function time(){
 	if(night == false){
-		document.getElementById("night").style.opacity = "40%";
-		
+		document.getElementById("night").style.opacity = "60%";
+		setTimeout(nighttime, 10000);
 			alert("It is night time. Go run around riskingly, or sleep safely in your shelter");
 		night = true;
 	}
 	else if(night == true){
-				document.getElementById("night").style.opacity = "0%";
+				clearTimeout(nighttime, 10000);
+		document.getElementById("night").style.opacity = "0%";
 		universe.hidden = true;
 	 day.hidden = false;
 		 day.style.top = "100px";
