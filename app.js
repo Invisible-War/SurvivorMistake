@@ -213,10 +213,10 @@ function time(){
 													 universe.hidden = false;
 												 }, 5000)
 	}
-	setTimeout(time, 240000);
+	setTimeout(time, 120000);
 }
 function load() {
-	setTimeout(time, 240000);
+	setTimeout(time, 120000);
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use arrow keys to move and  space to search for resources.";
