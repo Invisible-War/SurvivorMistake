@@ -212,7 +212,7 @@ function time(){
 		if(daynumber >= 4){
 			day.innerHTML = "Day " + daynumber + ". Keep your stats in check. Now, water is a factor. Find the lake at (0, 0), then press D to drink.";
 		}
-		if(daynumber > 4 && daynumber % 2 != 0){
+		if(daynumber > 4){
 			thirst += 10;
 			if(thirst >=30){
 				 alert("You did not drink enough. Game Over.");
@@ -224,6 +224,9 @@ function time(){
 														 window.close();
 													 }
 			}
+		}
+		if(daynumber === 6){
+			alert("Thank you for playing the One Survivor Preview. Updates coming soon.");
 		}
 		alert("Wake up sleepyhead! You must go live today!");
 		
@@ -249,6 +252,7 @@ function load() {
 	day.style.left = "50%";
 	document.body.appendChild(day);
 	setTimeout(() => {
+		alert("Wood will be between 0-500 X and 0-500 Z.");
 		for (var i = 0; i < 5; i++) {
 			wood = document.createElement("div");
 			wood.setAttribute("id", i);
