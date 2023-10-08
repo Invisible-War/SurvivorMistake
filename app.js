@@ -2,6 +2,7 @@ var house = false;
 var task = document.getElementById("enemyhealth");
 var tasks = document.getElementById("tasks");
 var x;
+var timeout;
 var fire;
 var ss;
 var thirst = 0;
@@ -165,6 +166,7 @@ var wood4;
 var firematrix;
 var wood5;
 function time(){
+	clearTimeout(timeout)
 	if(night == false){
 		document.getElementById("night").style.opacity = "60%";
 		setTimeout(nighttime, 10000);
@@ -232,10 +234,10 @@ function time(){
 													 universe.hidden = false;
 												 }, 5000)
 	}
-	setTimeout(time, 120000);
+	timeout = setTimeout(time, 120000);
 }
 function load() {
-	setTimeout(time, 120000);
+	timeout = setTimeout(time, 120000);
 	document.getElementById("heli").pause();
 	document.getElementById("boom").play();
 	day.innerHTML = "Day " + daynumber + ". Use arrow keys to move and  space to search for resources.";
