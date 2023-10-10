@@ -152,7 +152,6 @@ function time(){
 	clearTimeout(timeout)
 	if(night == false){
 		document.getElementById("night").style.opacity = "60%";
-		setTimeout(nighttime, 10000);
 			alert("It is night time. Go run around riskingly, or sleep safely in your shelter");
 		night = true;
 	}
